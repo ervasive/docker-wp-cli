@@ -88,7 +88,6 @@ if ! $(wp core is-installed) ; then
     extra_php=()
     extra_php+="define( 'WP_HOME', '$WP_HOME' );"
     extra_php+="define( 'WP_SITEURL', '$WP_HOME' );"
-    extra_php+="define( 'RT_WP_NGINX_HELPER_CACHE_PATH', '/var/run/fastcgi-cache' );"
 
     if [[ $WP_DEBUG == true ]] ; then
         extra_php+="define( 'WP_DEBUG', true );"
