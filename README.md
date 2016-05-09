@@ -12,26 +12,26 @@ Based on the [official php:7-fpm docker image](https://hub.docker.com/_/php/)
 ### Required variables:
 | Variable Name     | Description         |
 | ---               | ---                 |
-| `MYSQL_HOSTNAME`  | Database container name |
-| `MYSQL_DATABASE`  | Database name |
-| `MYSQL_USER`      | Database user |
-| `MYSQL_PASSWORD`  | Database password |
-| `WP_HOME`         | WordPress WP_HOME constant |
-| `WP_ADMIN_USER`   | WordPress administrator username |
-| `WP_ADMIN_PASS`   | WordPress administrator user password |
-| `WP_ADMIN_EMAIL`  | WordPress administrator email address |
+| `DWC_WP_ROOT`          | Directory where WordPress will be installed |
+| `DWC_WP_HOME`          | WordPress WP_HOME constant |
+| `DWC_WP_DB_HOST_NAME`  | Database container name |
+| `DWC_WP_DB_NAME`       | Database name |
+| `DWC_WP_DB_USER`       | Database user |
+| `DWC_WP_DB_PASS`       | Database password |
+| `DWC_WP_ADMIN_USER`    | WordPress administrator username |
+| `DWC_WP_ADMIN_PASS`    | WordPress administrator user password |
+| `DWC_WP_ADMIN_EMAIL`   | WordPress administrator email address |
 
 ### Optional variables:
 | Variable Name     | Description         | Default value            |
 | ---               | ---                 | ---                      |
-| `WP_TABLE_PREFIX` | Database tables prefix | `wp_` |
-| `WP_ROOT`         | Where WordPress should be installed | `/usr/share/nginx/html` |
-| `WP_LANG`         | WordPress locale | `en_US` |
-| `WP_VERSION`      | WordPress version to install | `latest` |
-| `WP_DB_DUMP`      | Database dump filename to import instead of fresh database installation (directory containing this file must be mounted to container at `/database` path) | `none` |
-| `WP_PLUGINS`      | Additional plugins to install (plugin slugs separated with spaces) | `none` |
-| `WP_THEME`        | Theme slug to install and activate with WordPress installation | `none` |
-| `WP_DEBUG`        | Enables development oriented mode. [Details](#development-mode) | `false` |
+| `DWC_WP_DB_TABLE_PREFIX`    | Database tables prefix | `wp_` |
+| `DWC_WP_DB_IMPORT_FILENAME` | Database dump filename to import instead of fresh database installation (directory containing this file must be mounted to container at `/database` path) | `none` |
+| `DWC_WP_LANG`               | WordPress locale | `en_US` |
+| `DWC_WP_VERSION`            | WordPress version to install | `latest` |
+| `DWC_WP_PLUGINS`            | Additional plugins to install (plugin slugs separated with spaces) | `none` |
+| `DWC_WP_THEME`              | Theme slug to install and activate with WordPress installation | `none` |
+| `DWC_WP_DEBUG`              | Enables development oriented mode. [Details](#development-mode) | `false` |
 
 ### Development mode:
 - Set `DEBUG` and `SAVEQUERIES` WordPress constants to true,
