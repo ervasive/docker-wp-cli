@@ -208,6 +208,17 @@ PHP
 fi
 
 
+# Load user entry point additions
+# -----------------------------------------------------------------------------
+if [[ -e /user-entrypoint.sh ]] ; then
+    if [[ ! -x /user-entrypoint.sh ]] ; then
+        chmod +x /user-entrypoint.sh
+    fi
+
+    source /user-entrypoint.sh
+fi
+
+
 # Unsetting sensitive variables
 # -----------------------------------------------------------------------------
 unset DWC_WP_ADMIN_USER
