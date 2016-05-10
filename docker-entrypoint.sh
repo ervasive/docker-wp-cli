@@ -208,6 +208,13 @@ PHP
 fi
 
 
+# Unsetting sensitive variables
+# -----------------------------------------------------------------------------
+unset DWC_WP_ADMIN_USER
+unset DWC_WP_ADMIN_PASS
+unset DWC_WP_ADMIN_EMAIL
+
+
 # Start container's main process
 # -----------------------------------------------------------------------------
 exec php-fpm
