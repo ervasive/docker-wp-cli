@@ -25,7 +25,7 @@ done
 
 # Setup optional variables with default values
 # -----------------------------------------------------------------------------
-DWC_WP_DB_TABLE_PREFIX=${DWC_WP_DB_TABLE_PREFIX):=wp_}
+DWC_WP_DB_TABLE_PREFIX=${DWC_WP_DB_TABLE_PREFIX:=wp_}
 DWC_WP_LANG=${DWC_WP_LANG:="en_US"}
 DWC_WP_VERSION=${DWC_WP_VERSION:="latest"}
 DWC_WP_DEBUG=${DWC_WP_DEBUG:=false}
