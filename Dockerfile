@@ -1,17 +1,23 @@
-FROM php:7-fpm
+FROM php:7-fpm-alpine
 
 # Install packages and php extensions
-RUN apt-get update && apt-get install -y \
+RUN apk upgrade --update && apk add --no-cache \
+        bash \
         sudo \
         less \
+        coreutils \
+        freetype-dev \
+        libjpeg-turbo-dev \
+        libmcrypt-dev \
+        libpng-dev \
         mysql-client \
-        libmysqlclient-dev \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng12-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd mysqli opcache \
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+    && docker-php-ext-install -j$(nproc) \
+        gd \
+        iconv \
+        mcrypt \
+        mysqli \
+        opcache
 
 # Set custom PHP overrides
 RUN { \
