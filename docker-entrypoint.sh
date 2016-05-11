@@ -116,7 +116,7 @@ PHP
         sleep 1
         let dbhost_counter=dbhost_counter+1
 
-        if [[ $dbhost_counter -gt 20 ]] ; then
+        if [[ $dbhost_counter -gt 30 ]] ; then
             echo "Error: Could not connect to database server. Exiting."
             exit 1
         fi
