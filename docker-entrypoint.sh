@@ -4,7 +4,6 @@ set -e
 # Check if all required variables defined.
 # -----------------------------------------------------------------------------
 required_vars=(\
-    DWC_WP_DB_HOST_NAME \
     DWC_WP_DB_NAME \
     DWC_WP_DB_USER \
     DWC_WP_DB_PASS \
@@ -25,6 +24,7 @@ done
 
 # Setup optional variables with default values
 # -----------------------------------------------------------------------------
+DWC_WP_DB_HOST_NAME=${DWC_WP_DB_HOST_NAME:=database}
 DWC_WP_DB_TABLE_PREFIX=${DWC_WP_DB_TABLE_PREFIX:=wp_}
 DWC_WP_LANG=${DWC_WP_LANG:="en_US"}
 DWC_WP_VERSION=${DWC_WP_VERSION:="latest"}

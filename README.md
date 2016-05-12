@@ -14,7 +14,6 @@ Based on the [official php:7-fpm docker image](https://hub.docker.com/_/php/)
 | ---                    | ---                 |
 | `DWC_WP_ROOT`          | Directory where WordPress will be installed |
 | `DWC_WP_HOME`          | WordPress WP_HOME constant |
-| `DWC_WP_DB_HOST_NAME`  | Database container name |
 | `DWC_WP_DB_NAME`       | Database name |
 | `DWC_WP_DB_USER`       | Database user |
 | `DWC_WP_DB_PASS`       | Database password |
@@ -25,6 +24,7 @@ Based on the [official php:7-fpm docker image](https://hub.docker.com/_/php/)
 ### Optional variables:
 | Variable Name               | Description         | Default value            |
 | ---                         | ---                 | ---                      |
+| `DWC_WP_DB_HOST_NAME`       | Database container (service) name | `none` |
 | `DWC_WP_DB_TABLE_PREFIX`    | Database tables prefix | `wp_` |
 | `DWC_WP_DB_IMPORT_FILENAME` | Database dump filename to import instead of fresh database installation (directory containing this file must be mounted to container at `/database` path) | `none` |
 | `DWC_WP_LANG`               | WordPress locale | `en_US` |
