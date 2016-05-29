@@ -2,6 +2,7 @@ FROM php:7-fpm-alpine
 
 # Install packages and php extensions
 RUN apk upgrade --update && apk add --no-cache \
+        autoconf file g++ gcc binutils isl libatomic libc-dev musl-dev make re2c libstdc++ libgcc binutils-libs mpc1 mpfr3 gmp libgomp \
         bash \
         sudo \
         less \
@@ -11,18 +12,16 @@ RUN apk upgrade --update && apk add --no-cache \
         libmcrypt-dev \
         libpng-dev \
         mysql-client \
+    && docker-php-ext-install iconv mcrypt mysqli mysqlnd pdo pdo_mysql zip opcache \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) \
-        gd \
-        iconv \
-        mcrypt \
-        mysqli \
-        opcache
+    && docker-php-ext-install gd \
+    && apk del autoconf file g++ gcc binutils isl libatomic libc-dev musl-dev make re2c libstdc++ libgcc binutils-libs mpc1 mpfr3 gmp libgomp \
+    && rm -rf /var/cache/apk/*
 
 # Set custom PHP overrides
 RUN { \
-        echo 'upload_max_filesize=100M'; \
-        echo 'post_max_size=100M'; \
+        echo 'upload_max_filesize=64M'; \
+        echo 'post_max_size=64M'; \
         echo 'cgi.fix_pathinfo=0'; \
     } > /usr/local/etc/php/conf.d/.user.ini
 
