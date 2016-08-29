@@ -24,7 +24,6 @@ done
 
 # Setup optional variables with default values
 # -----------------------------------------------------------------------------
-DWC_WP_DB_HOST_NAME=${DWC_WP_DB_HOST_NAME:=database}
 DWC_WP_DB_TABLE_PREFIX=${DWC_WP_DB_TABLE_PREFIX:=wp_}
 DWC_WP_LANG=${DWC_WP_LANG:="en_US"}
 DWC_WP_VERSION=${DWC_WP_VERSION:="latest"}
@@ -96,7 +95,7 @@ if ! $(wp core is-installed) ; then
     fi
 
     wp core config \
-        --dbhost=$DWC_WP_DB_HOST_NAME \
+        --dbhost=database \
         --dbname=$DWC_WP_DB_NAME \
         --dbuser=$DWC_WP_DB_USER \
         --dbpass=$DWC_WP_DB_PASS \
@@ -111,7 +110,7 @@ PHP
     # ---------------------------
     dbhost_counter=0
 
-    until [[ $(mysqladmin -h $DWC_WP_DB_HOST_NAME -u$DWC_WP_DB_USER -p$DWC_WP_DB_PASS status | awk '{print $1}') == "Uptime:" ]] &>/dev/null ; do
+    until [[ $(mysqladmin -h database -u$DWC_WP_DB_USER -p$DWC_WP_DB_PASS status | awk '{print $1}') == "Uptime:" ]] &>/dev/null ; do
         echo "Notice: Database server is not ready yet - waiting…"
         sleep 1
         let dbhost_counter=dbhost_counter+1
